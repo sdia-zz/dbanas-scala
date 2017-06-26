@@ -9,7 +9,7 @@ object ScalaTutorial {
     }
 
     //
-    println("Do-while loop...")    
+    println("Do-while loop...")
     i = 0
     do {
       println(i)
@@ -18,7 +18,7 @@ object ScalaTutorial {
 
 
     //
-    println("For loop...")    
+    println("For loop...")
     for (i <- 1 to 10)
       println(i)
 
@@ -69,7 +69,6 @@ object ScalaTutorial {
         }
       }
     }
-
     printPrimes
 
 
@@ -83,5 +82,10 @@ object ScalaTutorial {
       } while( numberGuess != 15)
         }
     ask15
+
+
+    //
+    println("string interpolation...")
+    printf("you guessed the secret number %d\n", 15)
   }
 }
