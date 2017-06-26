@@ -20,10 +20,5 @@ object ScalaTutorial {
         // iter
         tupleMarge.productIterator.foreach(println)
         tupleMarge.productIterator.foreach{i => println(i)}
-
-
-
     }
-
-
 }
