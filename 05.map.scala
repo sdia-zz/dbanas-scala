@@ -23,7 +23,6 @@ object ScalaTutorial {
         customers(102) = "Megan Swift"
         for((k,v) <- customers)
             printf("%d : %s\n", k, v)
-
-
+    
     }
 }

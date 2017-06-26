@@ -8,18 +8,12 @@ import scala.io.Source
 
 object ScalaTutorial {
 
-
+    // if you don't want a class to be inherited declare it final!
     class Animal(var name: String, var sound: String){
-        //init
-        // function signature and the line below define the constructor
-        // check further for how to add other constructors
         this.setName(name)
 
-        // unlike Java, there are no static variables or static methods
-        // a companion object is the workaround, check: object Animal ...
         val id = Animal.newIdNum
 
-        //getters, setters
         def getName(): String = name
         def getSound() : String = sound
 
@@ -34,8 +28,6 @@ object ScalaTutorial {
             this.sound = sound
         }
 
-        // it is possible to create other constructors though
-        // e.g. if arguments name, sound are missing
         def this(name : String){
             this("No name", "No sound")
             this.setName(name)
@@ -45,23 +37,38 @@ object ScalaTutorial {
             this("No name", "No sound")
         }
 
-        // override a method
         override def toString(): String = {
             return "%s with the id %d says %s".format(this.name, this.id, this.sound)
         }
     } // END OF class Animal
 
-
-    object Animal { // companion object for static variables and functions
-                    // should be same name as the class ...?
+    object Animal {
         private var idNumber = 0
         private def newIdNum = { idNumber += 1; idNumber }
     } // END OF object Animal
 
+    class Dog(name: String, sound: String, growl: String) extends Animal (name, sound) {
+
+        def this(name: String, sound: String){
+            this("No name", sound, "No growl")
+            this.setName(name)
+        }
+
+        def this(name: String){
+            this("No name", "No sound", "No growl")
+            this.setName(name)
+        }
+
+        def this(){
+            this("No name", "No sound", "No growl")
+        }
+
+        override def toString(): String = {
+            return "%s with the id %d says %s or %s".format(this.name, this.id, this.sound, this.growl)
+        }
+    }
 
     def main(args:Array[String]){
-
-        // let's use our Animal
         val rover = new Animal
         rover.setName("Rover")
         rover.setSound("Woof")
@@ -71,9 +78,8 @@ object ScalaTutorial {
         println(s"${whiskers.getName} with the id ${whiskers.id} says ${whiskers.getSound}")
         println(whiskers.toString)
 
+        val spike = new Dog("Spike", "Woof", "Grrrrrrrr")
+        println(spike.toString)
+
     } // END OF main
-
-
-
-
 } // END OF ScalaTutorial
